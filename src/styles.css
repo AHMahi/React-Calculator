@@ -1,0 +1,61 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/*all body elements will have no margin and color will fade from white to blue*/
+body{
+    margin: 0;
+    background: linear-gradient(to right, #d3b0f6, #87CEEB);
+}
+
+/*to span the equal sign to two rows*/
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    margin-top: 7rem;
+    grid-template-columns: repeat(4, 6rem);/*gives us 4 different columns*/
+    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+/*7rem is row size and, auto lets us grow our output number as much as needed to maximum height*/
+}/*repeat(5) means 5 rows of button and each button will have size of 6rem*/
+
+/*to span the equal sign and AC button to two rows*/
+.span-two {
+    grid-column: span 2;
+}
+
+.output {
+    /*we want output to span the entire row from 1 to -1*/
+    grid-column: 1 / -1;
+    background-color: rgba(203, 203, 203, 0.8);
+    display: flex;
+    flex-direction: column;/*cause we want to vertically stack our previous and current operand*/
+    align-items: flex-end;/*we put the ouput values to the right end*/
+    justify-content: space-around;
+    padding: .75rem;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: #5f5f5f;
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: #000000;
+    font-size: 2.5rem;
+}
+
+/* we select each button inside the calculator grid */
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .70)
+}
+
+.calculator-grid > button:hover,
+.calculator-grid > button:focus {
+    background-color: rgba(255, 255, 255, .90)
+}
